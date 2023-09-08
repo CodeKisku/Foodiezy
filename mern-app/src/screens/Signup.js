@@ -1,13 +1,15 @@
+import { Alert } from 'bootstrap'
 import React,{useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 export default function Signup() {
 
   const [credentials, setcredentials] = useState({name:"", email:"", password:"", geolocation:""})
 
+  let navigate = useNavigate()
+
   const handleSubmit = async(e) => {
     e.preventDefault()
-    console.log(JSON.stringify({name:credentials.name, email:credentials.email, password: credentials.password, location: credentials.geolocation}))
     const response = await fetch("http://localhost:5000/api/createuser",{
       method:'POST',
       headers:{
@@ -16,10 +18,14 @@ export default function Signup() {
       body:JSON.stringify({name:credentials.name, email:credentials.email, password: credentials.password, location: credentials.geolocation})
     })
     const json = await response.json()
-    console.log(json)
-
+    
     if(!json.success) {
       alert("Enter valid credentials")
+    }
+
+    if (json.success) {
+      alert("Account Created Successfully, Please login Now")
+      navigate("/login")
     }
 
   }

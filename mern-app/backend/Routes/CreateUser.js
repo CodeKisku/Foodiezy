@@ -25,7 +25,6 @@ router.post("/createuser", [
       res.json({ success: true })
 
     } catch (error) {
-      console.log(error)
       res.json({ success: false })
     }
   })
@@ -51,7 +50,6 @@ router.post("/loginuser", [
 
       return res.json({ success: true })
     } catch (error) {
-      console.log(error)
       res.json({ success: false })
     }
   })
