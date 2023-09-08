@@ -2,8 +2,9 @@ const express = require("express")
 const router = express.Router()
 const User = require("../models/User")
 const { body, validationResult } = require('express-validator')
-
+const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
+const jwtSecret = "ThisisarandomText!@#$%^&*()_+|{}"
 
 router.post("/createuser", [
   body('email').isEmail(),
@@ -53,8 +54,14 @@ router.post("/loginuser", [
       if (!pwdCompare) {
         return res.status(400).json({ errors: "Try logging with correct credentials" })
       }
+      const data = {
+        user: {
+          id: userData.id
+        }
+      }
 
-      return res.json({ success: true })
+      const authToken = jwt.sign(data, jwtSecret)
+      return res.json({ success: true, authToken: authToken })
     } catch (error) {
       res.json({ success: false })
     }
