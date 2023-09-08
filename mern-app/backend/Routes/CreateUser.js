@@ -49,7 +49,8 @@ router.post("/loginuser", [
       if (!userData) {
         return res.status(400).json({ errors: "Try logging with correct credentials" })
       }
-      if (req.body.password !== userData.password) {
+      const pwdCompare = await bcrypt.compare(req.body.password, userData.password)
+      if (!pwdCompare) {
         return res.status(400).json({ errors: "Try logging with correct credentials" })
       }
 
