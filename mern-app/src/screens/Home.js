@@ -43,14 +43,18 @@ export default function Home() {
           foodCat !== []
             ? foodCat.map((data) => {
               return (
-                <div>
+                <div className='row mb-3'>
                   <div key={data._id} className='fs-3 m-3'>{data.CategoryName}!</div>
                   <hr />
                   {foodItem !== [] ?
                     foodItem.filter((item) => item.CategoryName === data.CategoryName).map(filterItems => {
                       return (
-                        <div key={filterItems._id}>
-                          <Card></Card>
+                        <div key={filterItems._id} className='col-12 col-md-6 col-lg-3'>
+                          <Card foodName={filterItems.name}
+                            options={filterItems.options[0]}
+                            imgSrc={filterItems.img}
+                            desc={filterItems.description}
+                          ></Card>
                         </div>
                       )
                     })
@@ -61,7 +65,6 @@ export default function Home() {
             })
             : ""
         }
-        < Card />
       </div>
       <div> <Footer /> </div>
     </div >
