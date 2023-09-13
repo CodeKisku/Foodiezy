@@ -21,7 +21,7 @@ export default function Cart() {
             <tr>
               <th scope='col'>#</th>
               <th scope='col'>Name</th>
-              <th scope='col'>Quantiy</th>
+              <th scope='col'>Quantity</th>
               <th scope='col'>Option</th>
               <th scope='col'>Count</th>
               <th scope='col'></th>
