@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react'
-import context from 'react-bootstrap/esm/AccordionContext'
+// import context from 'react-bootstrap/esm/AccordionContext'
 
 const CartStateContext = createContext()
 const CartDispatchContext = createContext()
