@@ -9,8 +9,10 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState([])
   const [foodItem, setFoodItem] = useState([])
 
+  console.log(process.env.render_URL)
+
   const loadData = async () => {
-    let response = await fetch(`${process.env.render_URL}/api/foodData`, {
+    let response = await fetch(`https://foodiezy-api.onrender.com/api/foodData`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
