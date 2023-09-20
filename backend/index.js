@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORT = 5000
+const mongoose = require('mongoose');
 const mongoDB = require("./db")
 mongoDB();
 
@@ -21,7 +21,22 @@ app.use('/api', require("./Routes/OrderData"));
 app.get('/', (req, res) => {
   res.send('Foodiezy')
 })
+app.get('/getdata', (req, res) => {
+  res.send(JSON.stringify(mongoose.connection.db.collection("food_items")))
+})
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+// app.get('/getData', myAsyncFunction)
+
+// async function index(req, res) {
+//   let r = await db.collection("food_items").toArray();
+//   return res.send(r);
+// }
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 5000;
+}
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
 })
