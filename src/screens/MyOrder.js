@@ -7,7 +7,7 @@ export default function MyOrder() {
 
   const fetchMyOrder = async () => {
     // console.log(localStorage.getItem('userEmail'))
-    await fetch(`https://foodiezy-api.onrender.com/api/myOrderData`, {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/api/myOrderData`, {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',

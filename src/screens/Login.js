@@ -10,7 +10,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(JSON.stringify({ email: credentials.email, password: credentials.password }))
-    const response = await fetch(`https://foodiezy-api.onrender.com/api/loginuser`, {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/loginuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

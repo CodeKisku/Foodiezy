@@ -14,7 +14,7 @@ export default function Cart() {
   }
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail")
-    let response = await fetch(`https://foodiezy-api.onrender.com/api/orderData`, {
+    let response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/orderData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
