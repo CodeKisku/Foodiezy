@@ -3,16 +3,16 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card'
 
+
 export default function Home() {
 
   const [search, setSearch] = useState('')
   const [foodCat, setFoodCat] = useState([])
   const [foodItem, setFoodItem] = useState([])
 
-  console.log(process.env.render_URL)
 
   const loadData = async () => {
-    let response = await fetch(`https://foodiezy-api.onrender.com/api/foodData`, {
+    let response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/foodData`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
