@@ -5,6 +5,7 @@ import Modal from '../Modal'
 import Cart from '../screens/Cart'
 import { useCart } from './ContextReducer'
 import '../App.css';
+import logoImg from '../assets/img/logo.png'
 
 export default function Navbar() {
   let data = useCart()
@@ -20,41 +21,37 @@ export default function Navbar() {
   return (
     <div>
       <nav className="navbar">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">Foodiezy</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2">
-              <li className="nav-item">
-                <Link className="nav-link active fs-5 mt-3" aria-current="page" to="/">Home</Link>
-              </li>
-              {(localStorage.getItem("authToken")) ?
-                <li className="nav-item">
-                  <Link className="nav-link active fs-5 mt-3" aria-current="page" to="/myOrder">My Orders</Link>
-                </li>
-                : ""
-              }
-            </ul>
-            {(!localStorage.getItem("authToken")) ?
-              <div className='d-flex'>
-                <Link className="btn bg-white text-success mx-1" to="/login">Login</Link>
-                <Link className="btn bg-white text-success mx-1" to="/signup">Signup</Link>
-              </div>
-              :
-              <div>
-                <div className='btn bg-white text-success mx-1' onClick={() => { setCartView(true) }}>
-                  My Cart {" "}
-                  <Badge pill bg='danger'>{data.length === 0 ? "" : data.length}</Badge>
-                </div>
-                {cartView ? <Modal onClose={() => { setCartView(false) }}><Cart /></Modal> : null}
-                <div className='btn bg-white text-danger mx-1' onClick={handleLogout} >
-                  Logout
-                </div>
-              </div>
+
+        <Link class="navbar-brand" to="#">
+          <img src={logoImg} width="50" height="50" class="d-inline-block align-top" alt="Foodiezy logo" />
+          Foodiezy
+        </Link>
+
+        <div id="navbarNav" className='navbarNav'>
+          <div>
+
+            {(localStorage.getItem("authToken")) ?
+              <Link className="btn mx-1" to="/myOrder">My Orders</Link>
+              : ""
             }
           </div>
+          {(!localStorage.getItem("authToken")) ?
+            <div className='d-flex'>
+              <Link className="btn mx-1" to="/login">Login</Link>
+              <Link className="btn mx-1" to="/signup">Signup</Link>
+            </div>
+            :
+            <div>
+              <div className='btn mx-1' onClick={() => { setCartView(true) }}>
+                My Cart {" "}
+                <Badge pill bg='danger'>{data.length === 0 ? "" : data.length}</Badge>
+              </div>
+              {cartView ? <Modal onClose={() => { setCartView(false) }}><Cart /></Modal> : null}
+              <div className='btn mx-1 btn-logout' onClick={handleLogout} >
+                Logout
+              </div>
+            </div>
+          }
         </div>
       </nav>
     </div>
