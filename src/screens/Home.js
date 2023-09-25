@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card'
+import burgerImg from '../assets/img/burger-carousel.jpeg'
+import pizzaImg from '../assets/img/pizza-carousel.jpeg'
+import biryaniImg from '../assets/img/biryani-carousel.jpeg'
 
 
 export default function Home() {
@@ -39,38 +42,68 @@ export default function Home() {
   return (
     <div>
       <div> <Navbar /> </div>
-      <div>
-        <div>
-          <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
-            <div className="carousel-inner" id='carousel' style={{ "objectFit": "contain !important" }}>
-              <div className='carousel-caption' style={{ "zIndex": "100" }}>
-                <div className="d-flex justify-content-center">
-                  <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
-                  {/* <button className="btn btn-outline-success text-white bg-success" type="submit">Search</button> */}
-                </div>
-              </div>
-              <div className="carousel-item active">
-                <img className="d-block w-100" src="https://source.unsplash.com/random/800x400/?burger" alt="First slide" />
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="https://source.unsplash.com/random/800x400/?pizza" alt="Second slide" />
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="https://source.unsplash.com/random/800x400/?biryani" alt="Third slide" />
-              </div>
+
+      <div id="carouselExampleInterval" className="carousel slide overlay" data-bs-ride="carousel">
+        <div className="carousel-inner" id="carousel" style={{ "objectFit": "contain !important" }}>
+          <div className='carousel-caption' style={{ "zIndex": "100" }}>
+            <div className="foodiezy-logo ">
+              <h1>Foodiezy</h1>
+              <p>Find the best restaurants, cafés<br /> and bars in India</p>
             </div>
-            <button className="carousel-control-prev" type='button' data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type='button' data-bs-target="#carouselExampleFade" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
+          </div>
+          <div className='carousel-caption' style={{ "zIndex": "100" }}>
+            <div className="d-flex justify-content-center">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
+            </div>
+          </div >
+          <div className="carousel-item active" data-bs-interval="2000">
+            <img src={burgerImg} className="d-block w-100" alt="..." />
+          </div>
+          <div className="carousel-item" data-bs-interval="2000">
+            <img src={pizzaImg} className="d-block w-100" alt="..." />
+          </div>
+          <div className="carousel-item" data-bs-interval="2000">
+            <img src={biryaniImg} className="d-block w-100" alt="..." />
           </div>
         </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
       </div>
-      <div className='container'>
+
+      {/* <div id="carouselExampleInterval" className="carousel slide overlay" data-bs-ride="carousel">
+        <div className="carousel-inner" id="carousel" style={{ "objectFit": "contain !important" }}>
+          <div className='carousel-caption' style={{ "zIndex": "100" }}>
+            <div className="foodiezy-logo ">
+              <h1>Foodiezy</h1>
+              <p>Find the best restaurants, cafés<br /> and bars in India</p>
+            </div>
+          </div>
+          <div className='carousel-caption' style={{ "zIndex": "100" }}>
+            <div className="d-flex justify-content-center">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
+
+            </div>
+          </div >
+          <div className="carousel-item active">
+            <img className="d-block w-100" src={burgerImg} alt=" First slide" />
+          </div>
+          <div className="carousel-item" >
+            <img className="d-block w-100" src={pizzaImg} alt="Second slide" />
+          </div>
+          <div className="carousel-item">
+            <img className="d-block w-100" src={biryaniImg} alt="Third slide" />
+          </div>
+
+        </div>
+      </div> */}
+
+      <div className='container' >
         {
           foodCat !== []
             ? foodCat.map((data) => {
