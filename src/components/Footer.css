@@ -1,0 +1,51 @@
+.footer {
+  background-color: var(--secondary-color);
+  width: 100%;
+  padding: 1px 50px 0px;
+  position: relative;
+}
+
+.footer-logo h1 {
+  font-family: "Pacifico", cursive;
+  font-weight: 500;
+  font-size: 50px;
+  margin: 30px;
+}
+
+.footer-about {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.footer-about ul {
+  margin-right: 20px;
+}
+
+.footer-about ul ul {
+  margin-bottom: 35px;
+}
+
+.footer-about ul li {
+  font-size: .8rem;
+  line-height: 1.2rem;
+  color: rgb(105, 105, 105);
+  margin: 0.5rem 0px;
+  list-style-type: none;
+
+}
+
+.footer-about .social-links li {
+  display: flex;
+  margin: 10px 10px 0 0;
+}
+
+.app-store button, .google-play button {
+  background-color: var(--option-color);
+  color: #fff;
+  height: 50px;
+  width: 10rem;
+  border-radius: 10px;
+  margin: 10px 0;
+}
