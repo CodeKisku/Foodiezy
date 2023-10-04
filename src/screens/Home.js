@@ -25,8 +25,6 @@ export default function Home() {
 
     setFoodItem(response[0])
     setFoodCat(response[1])
-
-    // console.log(response[0], response[1])
   }
 
   useEffect(() => {
@@ -76,33 +74,6 @@ export default function Home() {
         </button>
       </div>
 
-      {/* <div id="carouselExampleInterval" className="carousel slide overlay" data-bs-ride="carousel">
-        <div className="carousel-inner" id="carousel" style={{ "objectFit": "contain !important" }}>
-          <div className='carousel-caption' style={{ "zIndex": "100" }}>
-            <div className="foodiezy-logo ">
-              <h1>Foodiezy</h1>
-              <p>Find the best restaurants, cafés<br /> and bars in India</p>
-            </div>
-          </div>
-          <div className='carousel-caption' style={{ "zIndex": "100" }}>
-            <div className="d-flex justify-content-center">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
-
-            </div>
-          </div >
-          <div className="carousel-item active">
-            <img className="d-block w-100" src={burgerImg} alt=" First slide" />
-          </div>
-          <div className="carousel-item" >
-            <img className="d-block w-100" src={pizzaImg} alt="Second slide" />
-          </div>
-          <div className="carousel-item">
-            <img className="d-block w-100" src={biryaniImg} alt="Third slide" />
-          </div>
-
-        </div>
-      </div> */}
-
       <div className='container' >
         {
           foodCat !== []
@@ -115,7 +86,7 @@ export default function Home() {
                     foodItem.filter((item) => (item.CategoryName === data.CategoryName) && (item.name.toLowerCase().includes(search.toLowerCase())))
                       .map(filterItems => {
                         return (
-                          <div key={filterItems._id} className='col-12 col-md-6 col-lg-3'>
+                          <div key={filterItems._id} className='col-sm-12 col-md-6 col-lg-4 col-xl-3'>
                             <Card foodItem={filterItems}
                               options={filterItems.options[0]}
                             ></Card>
