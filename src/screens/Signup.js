@@ -1,6 +1,8 @@
 // import { Alert } from 'bootstrap'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default function Signup() {
 
@@ -35,9 +37,13 @@ export default function Signup() {
   }
 
   return (
-    <>
-      <div className='container'>
+    <div>
+      <div> <Navbar /> </div>
+      <div className='container mt-5 border border-black p-5 rounded'>
         <form onSubmit={handleSubmit}>
+          <div>
+            <h2 className='mb-5 text-center'>Sign Up</h2>
+          </div>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
             <input type="text" className="form-control" name='name' value={credentials.name} onChange={onChange} />
@@ -45,7 +51,6 @@ export default function Signup() {
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
             <input type="email" className="form-control" name='email' value={credentials.email} id='exampleInputEmail1' onChange={onChange} />
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
@@ -56,9 +61,10 @@ export default function Signup() {
             <input type="text" className="form-control" name='geolocation' value={credentials.geolocation} id='geolocation' onChange={onChange} />
           </div>
           <button type="submit" className="m-3 btn btn-success">Submit</button>
-          <Link to="/login" className="m-3 btn btn-danger">Already a user?</Link>
+          <Link to="/login" className="m-3 btn btn-warning">Already a user?</Link>
         </form>
       </div>
-    </>
+      <div className='mt-5'> <Footer /> </div>
+    </div>
   )
 }
