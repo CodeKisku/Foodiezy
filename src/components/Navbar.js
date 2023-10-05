@@ -22,7 +22,7 @@ export default function Navbar() {
     <div>
       <nav className="navbar">
 
-        <Link class="navbar-brand" to="#">
+        <Link class="navbar-brand" to="/">
           <img src={logoImg} width="50" height="50" class="d-inline-block align-top" alt="Foodiezy logo" />
           Foodiezy
         </Link>
